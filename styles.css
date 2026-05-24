@@ -4,24 +4,26 @@
    CSS Variables
    ===================== */
 :root {
-    --bg-color: #f1f5f9;
-    --text-color: #1e293b;
-    --sidebar-bg: rgb(135, 206, 235);
+    --bg-color: #f5f3ff;
+    --text-color: #1e1b4b;
+    --sidebar-bg: #13132b;
+    --sidebar-text: #ede9fe;
     --card-bg: #ffffff;
-    --card-border: rgba(0, 0, 0, 0.07);
-    --accent: #3b82f6;
-    --accent-light: rgba(59, 130, 246, 0.1);
+    --card-border: rgba(124, 58, 237, 0.15);
+    --accent: #7c3aed;
+    --accent-light: rgba(124, 58, 237, 0.1);
     --sidebar-width: 260px;
 }
 
 html[data-theme="dark"] {
-    --bg-color: #0f172a;
+    --bg-color: #0f0f23;
     --text-color: #e2e8f0;
-    --sidebar-bg: #4a5568;
-    --card-bg: #1e293b;
-    --card-border: rgba(255, 255, 255, 0.07);
-    --accent: #60a5fa;
-    --accent-light: rgba(96, 165, 250, 0.12);
+    --sidebar-bg: #0a0a1a;
+    --sidebar-text: #ede9fe;
+    --card-bg: #1a1a35;
+    --card-border: rgba(124, 58, 237, 0.25);
+    --accent: #a78bfa;
+    --accent-light: rgba(167, 139, 250, 0.15);
 }
 
 /* =====================
@@ -69,12 +71,14 @@ body {
     align-items: center;
     gap: 1.2rem;
     background-color: var(--sidebar-bg);
+    color: var(--sidebar-text);
     padding: 2rem 1.25rem;
     position: sticky;
     top: 0;
     height: 100vh;
     overflow-y: auto;
     transition: background-color 0.3s ease;
+    border-right: 1px solid rgba(124, 58, 237, 0.2);
 }
 
 .left-container h4 {
@@ -82,6 +86,7 @@ body {
     font-weight: 600;
     text-align: center;
     line-height: 1.4;
+    color: var(--sidebar-text);
 }
 
 #left-pane-img {
@@ -91,14 +96,15 @@ body {
     object-fit: cover;
     flex-shrink: 0;
     border: 3px solid var(--accent);
-    box-shadow: 0 0 0 5px var(--accent-light);
+    box-shadow: 0 0 0 5px var(--accent-light), 0 0 24px rgba(124, 58, 237, 0.3);
 }
 
 #description {
     font-size: 0.78rem;
     text-align: center;
     line-height: 1.65;
-    opacity: 0.85;
+    color: var(--sidebar-text);
+    opacity: 0.75;
 }
 
 /* =====================
@@ -147,7 +153,7 @@ body {
     gap: 0.6rem;
     padding: 0.55rem 0.85rem;
     border-radius: 0.6rem;
-    color: var(--text-color);
+    color: var(--sidebar-text);
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 500;
@@ -155,19 +161,20 @@ body {
 }
 
 .detail-link:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(167, 139, 250, 0.15);
+    color: #a78bfa;
     text-decoration: none;
 }
 
 .nav-link.active {
-    background-color: var(--accent-light);
-    color: var(--accent);
+    background-color: rgba(124, 58, 237, 0.25);
+    color: #a78bfa;
     font-weight: 600;
 }
 
 .resume-link {
     margin-top: 0.5rem;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(167, 139, 250, 0.2);
     padding-top: 1rem;
 }
 
@@ -266,7 +273,7 @@ body {
     font-weight: 500;
     padding: 0.3rem 0.75rem;
     border-radius: 2rem;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    box-shadow: 0 1px 3px rgba(124, 58, 237, 0.08);
 }
 
 /* =====================
@@ -309,7 +316,7 @@ body {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.4);
+    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
     text-decoration: none;
     color: #ffffff;
 }
@@ -317,12 +324,13 @@ body {
 .btn-secondary {
     background-color: transparent;
     color: var(--text-color);
-    border-color: var(--text-color);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .btn-secondary:hover {
-    background-color: var(--text-color);
-    color: var(--bg-color);
+    background-color: var(--accent);
+    color: #ffffff;
     transform: translateY(-2px);
     text-decoration: none;
 }
@@ -333,6 +341,7 @@ body {
 .what-i-do-container {
     background-color: var(--card-bg);
     border: 1px solid var(--card-border);
+    border-left: 4px solid var(--accent);
     padding: 1.75rem 2rem;
     border-radius: 1rem;
     transition: background-color 0.3s ease;
@@ -377,7 +386,7 @@ body {
     border-radius: 50%;
     background-color: var(--accent);
     border: 2px solid var(--bg-color);
-    box-shadow: 0 0 0 3px var(--accent-light);
+    box-shadow: 0 0 0 3px var(--accent-light), 0 0 10px rgba(124, 58, 237, 0.4);
 }
 
 .timeline-content {
@@ -390,7 +399,8 @@ body {
 
 .timeline-content:hover {
     transform: translateX(4px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.12);
+    border-left: 3px solid var(--accent);
 }
 
 .timeline-header {
@@ -476,8 +486,8 @@ body {
 
 .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 8px 28px rgba(124, 58, 237, 0.18);
+    border-color: rgba(124, 58, 237, 0.45);
 }
 
 .project-header {
@@ -521,7 +531,7 @@ body {
     border-radius: 999px;
     background-color: var(--accent-light);
     color: var(--accent);
-    border: 1px solid rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(124, 58, 237, 0.2);
 }
 
 /* =====================
@@ -630,6 +640,7 @@ body {
     border-radius: 999px;
     border: 1.5px solid var(--accent);
     color: var(--accent);
+    background-color: var(--accent-light);
 }
 
 /* =====================
@@ -679,17 +690,17 @@ body {
     width: 52px;
     height: 28px;
     border-radius: 999px;
-    border: 2px solid #d97706;
+    border: 2px solid #6d28d9;
     cursor: pointer;
     padding: 0;
     flex-shrink: 0;
-    background-color: #f59e0b;
+    background-color: #ddd6fe;
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 html[data-theme="dark"] .theme-toggle {
-    background-color: #4f46e5;
-    border-color: #6366f1;
+    background-color: #4c1d95;
+    border-color: #a78bfa;
 }
 
 .toggle-thumb {
@@ -716,6 +727,7 @@ footer {
     padding: 1.25rem;
     font-size: 0.82rem;
     background-color: var(--sidebar-bg);
-    opacity: 0.9;
+    color: var(--sidebar-text);
+    opacity: 0.95;
     transition: background-color 0.3s ease;
 }

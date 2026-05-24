@@ -19,10 +19,11 @@ toggleBtn.addEventListener("click", () => {
 // Typing Animation
 // =====================
 const roles = [
-    "Software Development Engineer",
-    "Machine Learning Engineer",
-    "Full-Stack Developer",
-    "Defense Systems Engineer",
+    "Cybersecurity Analyst II",
+    "Threat Hunter",
+    "Detection Engineer",
+    "Incident Responder",
+    "SOC Technical Lead",
 ];
 
 const typingEl = document.getElementById("typing-text");
