@@ -1,17 +1,23 @@
 %------------------------------------------------------------------------------
+% Resume in LaTeX (ATS-friendly)
 % Candidate : Ismael Belem
+% Based on  : Charles Rambo template (https://github.com/fizixmastr) -- MIT
 % Compile   : pdfLaTeX (Overleaf default works)
 %------------------------------------------------------------------------------
 
 \documentclass[a4paper,10pt]{article}
 
 %-----PACKAGES-----------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{enumitem}
+\usepackage{needspace}
 \usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Ismael Belem - Resume}, pdfauthor={Ismael Belem}}
 \usepackage[english]{babel}
 \usepackage{palatino}
 \input{glyphtounicode}
@@ -32,6 +38,9 @@
 \titleformat{\section}{\vspace{-8pt}\scshape\raggedright\large}{}{0em}{}
   [\color{black}\titlerule \vspace{-4pt}]
 
+% Solid black circle bullets (extracts as the character "\textbullet")
+\setlist[itemize]{label=\textbullet}
+
 % Make PDF machine-readable (ATS)
 \pdfgentounicode=1
 
@@ -40,26 +49,30 @@
 \newcommand{\CVItem}[1]{\item\small{#1 \vspace{-2pt}}}
 
 % Role / school heading: {title}{date}{company/school}{location}
+% (plain text lines with \hfill -- no tables, so text extracts in reading order)
 \newcommand{\CVSubheading}[4]{
+  \needspace{4\baselineskip}\vspace{-3pt}\item
+  \textbf{#1}\hfill #2\par
+  {\small\emph{#3}\hfill #4}\par\vspace{-3pt}
+}
+
+% Education heading (no bold): {degree}{date}{school}{location}
+\newcommand{\CVEdu}[4]{
   \vspace{-3pt}\item
-  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & #2 \\
-    \small\emph{#3} & \small #4 \\
-  \end{tabular*}\vspace{-6pt}
+  #1\hfill #2\par
+  {\small\emph{#3}\hfill #4}\par\vspace{-3pt}
 }
 
 % Project heading: {name}{tech stack}{date}
 \newcommand{\CVProject}[3]{
-  \vspace{-3pt}\item
-  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} $|$ \emph{\small #2} & \small #3 \\
-  \end{tabular*}\vspace{-6pt}
+  \needspace{4\baselineskip}\vspace{-3pt}\item
+  \textbf{#1} \textbar{} {\small\emph{#2}}\hfill {\small #3}\par\vspace{-3pt}
 }
 
 % Lists
 \newcommand{\CVSubHeadingListStart}{\begin{itemize}[leftmargin=0.4cm, label={}]}
 \newcommand{\CVSubHeadingListEnd}{\end{itemize}\vspace{-4pt}}
-\newcommand{\CVItemListStart}{\begin{itemize}[leftmargin=0.55cm, itemsep=0pt, topsep=2pt]}
+\newcommand{\CVItemListStart}{\begin{itemize}[label=\textbullet, leftmargin=0.55cm, labelsep=0.25cm, itemsep=1pt, topsep=2pt, parsep=0pt]}
 \newcommand{\CVItemListEnd}{\end{itemize}\vspace{-4pt}}
 
 %==============================================================================
@@ -69,40 +82,33 @@
 %-----HEADER-------------------------------------------------------------------
 \begin{center}
   {\Huge \scshape Ismael Belem} \\ \vspace{3pt}
-  {\large \textbf{Cybersecurity Analyst} $|$ Incident Response $\cdot$ Threat Hunting $\cdot$ Detection Engineering $\cdot$ Cloud Security} \\ \vspace{4pt}
+  {\large \textbf{Cybersecurity Analyst} \textbar{} Incident Response \textbar{} Threat Hunting \textbar{} Detection Engineering} \\ \vspace{4pt}
   \small
-  North Bergen, NJ $\;|\;$ 929-326-8527 $\;|\;$
+  North Bergen, NJ \;\textbar\; 929-326-8527 \;\textbar\;
   \href{mailto:belem2010@hotmail.fr}{belem2010@hotmail.fr} \\
-  \href{https://www.ismaelbelem.com}{ismaelbelem.com} $\;|\;$
-  \href{https://www.linkedin.com/in/ismael-belem-95bb08173/}{linkedin.com/in/ismael-belem-95bb08173} $\;|\;$
-  \href{https://github.com/Ibelem1}{github.com/Ibelem1}
+  \href{https://www.ismaelbelem.com}{ismaelbelem.com} \;\textbar\;
+  \href{https://www.linkedin.com/in/ismael-belem-95bb08173/}{LinkedIn} \;\textbar\;
+  \href{https://github.com/Ibelem1}{Github}
 \end{center}
 \vspace{-8pt}
 
 %-----PROFESSIONAL SUMMARY-----------------------------------------------------
 \section{Professional Summary}
 \begin{itemize}[leftmargin=0.4cm, label={}]
-  \item \small{Cybersecurity Analyst with 4+ years of blue team experience in incident response, threat hunting, detection
-engineering, and digital forensics, serving as the highest technical escalation point for a managed SOC. Protects 400+
-endpoints across Azure, AWS, GCP, hybrid, and on-prem environments using Microsoft Sentinel, CrowdStrike Falcon,
-Wazuh, and Splunk. Reduced false-positive alerts through detection tuning, automated host containment with
-SOAR, and authored the SOPs and playbooks that standardize SOC response. Experienced briefing both technical
-teams and executive stakeholders.}
+  \item \small{Cybersecurity professional with 4+ years of experience in managed security operations, endpoint detection and response (EDR), SIEM investigations, threat hunting, vulnerability management, and security control improvement. Proficient in CrowdStrike Falcon, Microsoft Sentinel, Wazuh, Microsoft Defender, and automated incident containment. Holds a Master's degree in Digital Forensics and Cybersecurity and multiple Microsoft security certifications. Currently developing hands-on experience in AWS security.}
 \end{itemize}
 
 %-----TECHNICAL SKILLS---------------------------------------------------------
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0.4cm, label={}, itemsep=1pt]
   \small
-  \item \textbf{SIEM \& EDR:} Microsoft Sentinel, Splunk, Wazuh, CrowdStrike Falcon, CrowdStrike LogScale, Microsoft Defender for Endpoint, KQL
-  \item \textbf{Incident Response \& Threat Hunting:} Incident Investigation, IR Lifecycle, Threat Hunting, Adversary Infrastructure Analysis, MITRE ATT\&CK, IOC/IOA Analysis, Playbook \& SOP Development
-  \item \textbf{Detection Engineering \& Automation:} Detection Rule Development, Alert Tuning, CrowdStrike Fusion SOAR, PowerShell, Python, n8n
-  \item \textbf{Cloud \& Identity:} Microsoft Azure, AWS, Google Cloud Platform (GCP)
-  \item \textbf{Threat Intelligence \& OSINT:} MISP, Shodan, AbuseIPDB, Abuse.ch, Maltiverse, Lumu, SpiderFoot, Maltego, Recon-ng
-  \item \textbf{Vulnerability Management:} Nessus, Greenbone, Cavelo, Rapid7
-  \item \textbf{Digital Forensics:} Autopsy, FTK Imager, Sleuth Kit, Wireshark, HxD, Prefetch \& Jump List Analysis
-  \item \textbf{Frameworks:} NIST CSF, MITRE ATT\&CK, Zero Trust, Defense in Depth
-  \item \textbf{Networking \& Systems:} TCP/IP, OSI Model, VLANs, Windows, Linux, Kali Linux, macOS, VMware, Proxmox, Docker, FLARE VM
+  \item \textbf{SIEM \& EDR:} Microsoft Sentinel, CrowdStrike Falcon, Wazuh, Splunk, Microsoft Defender.
+  \item \textbf{Incident Response \& Threat Hunting:} Incident triage and investigation, malware and phishing analysis, business email compromise (BEC), account compromise, threat hunting, host containment, MITRE ATT\&CK.
+  \item \textbf{Detection \& AI Automation:} Detection rule development, alert tuning, dashboards and workbooks, CrowdStrike Fusion SOAR, PowerShell, Python, n8n, Workflow Automation, AI-Assisted Troubleshooting.
+  \item \textbf{Threat Intelligence \& OSINT:} MISP, Shodan, AbuseIPDB, Abuse.ch, Lumu, SpiderFoot, Maltego.
+  \item \textbf{Vulnerability Management:} Nessus, Greenbone, Cavelo, Rapid7.
+  \item \textbf{Cloud, Systems \& Networking:} Microsoft Azure, AWS, Google Cloud Platform (GCP), Windows, Linux, TCP, VLANs, Docker, VMware, Proxmox.
+  \item \textbf{Digital Forensics \& Frameworks:} Autopsy, FTK Imager, Sleuth Kit, Wireshark, HxD, Prefetch and Jump List analysis, NIST CSF, Zero Trust, Defense in Depth.
 \end{itemize}
 
 %-----EXPERIENCE---------------------------------------------------------------
@@ -113,41 +119,39 @@ teams and executive stakeholders.}
     {Cybersecurity Analyst II}{Sep 2023 -- Present}
     {Dataprise (MSSP)}{North Bergen, NJ}
     \CVItemListStart
-      \CVItem{Serve as the highest technical escalation point for SOC investigations, supporting incident response engagements involving advanced threat actors and enterprise breaches.}
-      \CVItem{Investigate alerts in CrowdStrike Falcon and Microsoft Sentinel, analyzing host telemetry and logs to identify IOCs/IOAs for malware, account compromise, and unauthorized activity.}
-      \CVItem{Implemented automated host containment (Attack Disruption) with CrowdStrike Fusion SOAR to isolate compromised systems based on vetted detections, shortening response time.}
-      \CVItem{Designed enterprise detection and telemetry dashboards in CrowdStrike LogScale and Microsoft Sentinel (KQL), improving SOC visibility across managed client environments.}
-      \CVItem{Manage 400+ endpoints in CrowdStrike: enforce EDR policies, coordinate sensor deployments, and build detection workflows and automated playbooks with PowerShell and Python.}
-      \CVItem{Conduct proactive threat hunting and adversary infrastructure analysis using telemetry, OSINT, adversary TTPs, and emerging threat intelligence feeds.}
-      \CVItem{Authored incident response SOPs and playbooks; trained Tier 1 analysts; deliver monthly client briefings on threats, vulnerabilities, and remediation, plus ongoing intelligence updates to analysts and stakeholders.}
-      \CVItem{Run security awareness programs (KnowBe4, Breach Secure Now) for 200 accounts, including automated training, phishing simulations, and monthly newsletters.}
-      \CVItem{Selected by the Cyber Department President to lead a vendor evaluation of security awareness tools, assessing efficiency, scalability, and AI capabilities.}
+      \CVItem{Investigate and escalate security incidents involving phishing, malware, business email compromise (BEC), account compromise, and suspicious activity using CrowdStrike Falcon and Microsoft Sentinel.}
+      \CVItem{Analyze endpoint telemetry including suspicious processes, command-line activity, file hashes, and potentially unwanted applications to support threat hunting, incident triage, and identification of indicators of compromise (IOCs) and indicators of attack (IOAs).}
+      \CVItem{Develop and refine Microsoft Sentinel detection queries using Kusto Query Language (KQL), contributing to detection tuning associated with a reported 25\% reduction in false-positive alerts.}
+      \CVItem{Manage CrowdStrike Falcon policies, coordinate sensor deployments, and support endpoint detection and response (EDR) operations across 400 endpoints.}
+      \CVItem{Built automated host-containment workflows with CrowdStrike Falcon Fusion SOAR and Attack Disruption to respond to vetted security detections.}
+      \CVItem{Build security monitoring dashboards in CrowdStrike and Microsoft Sentinel; conduct threat hunting using CrowdStrike Next-Gen SIEM, Microsoft Sentinel, Defender, OSINT, threat intelligence, and MITRE ATT\&CK tactics, techniques, and procedures.}
+      \CVItem{Develop incident response, ransomware, and phishing SOPs and playbooks; train Tier 1 SOC analysts; and communicate investigation findings, vulnerabilities, and remediation recommendations to stakeholders.}
+      \CVItem{Support security awareness programs for approximately 200 customer accounts using KnowBe4 and Breach Secure Now, including training and phishing simulations; evaluate vendors for efficiency, scalability, and AI capabilities.}
     \CVItemListEnd
 
   \CVSubheading
     {Cybersecurity Engineer}{Sep 2022 -- Sep 2023}
     {Cohere Cyber Secure (MSSP)}{Manhattan, NY}
     \CVItemListStart
-      \CVItem{Triaged security incidents, including ransomware, following the Incident Response Framework; performed host- and network-based forensics to determine root cause and preserve evidence.}
-      \CVItem{Onboarded clients to Wazuh SIEM and built custom detection rules and parsers (regex, threshold tuning), improving alert fidelity.}
-      \CVItem{Configured CrowdStrike Falcon policies to harden environments and prevent attacker lateral movement.}
-      \CVItem{Ran quarterly vulnerability assessments with Nessus and CrowdStrike; applied CVSS scoring, reported findings to clients, and coordinated remediation planning.}
-      \CVItem{Delivered After-Action Reports covering penetration test scope, risk management, mitigation strategies, and lessons learned.}
-      \CVItem{Developed incident response, ransomware, phishing, and Wazuh deployment SOPs and playbooks to standardize response and client onboarding.}
+      \CVItem{Triaged security incidents, including ransomware, and performed host- and network-based forensic analysis to investigate root causes and preserve evidence.}
+      \CVItem{Onboarded customers to Wazuh SIEM and developed custom detection rules and parsers, including regex and threshold tuning, to improve alert fidelity.}
+      \CVItem{Configured CrowdStrike Falcon policies to harden endpoint protection and limit attacker lateral movement.}
+      \CVItem{Conducted quarterly vulnerability assessments using Nessus and CrowdStrike, documented findings, and coordinated remediation planning with customers.}
+      \CVItem{Prepared after-action reports and developed incident response, ransomware, phishing, and Wazuh deployment SOPs and playbooks to standardize response and customer onboarding.}
     \CVItemListEnd
 
   \CVSubheading
     {Operations Manager}{Jan 2020 -- Sep 2022}
     {Bocaphe}{Manhattan, NY}
     \CVItemListStart
-      \CVItem{Recruited, trained, and scheduled staff; supported internal POS systems and remote troubleshooting (AnyDesk, TeamViewer), and set up new software and systems.}
+      \CVItem{Recruited, trained, and scheduled staff; supported point-of-sale systems, remote troubleshooting, and implementation of new software and systems.}
     \CVItemListEnd
 
   \CVSubheading
     {Freelance IT Technician}{Jan 2013 -- Sep 2021}
     {Self-Employed}{Ouagadougou, Burkina Faso \& Manhattan, NY}
     \CVItemListStart
-      \CVItem{Provided hardware maintenance, upgrades, and IT support for third-party clients; installed and configured operating systems, VMware, Wireshark, antivirus, Office 365, Azure, and Linux.}
+      \CVItem{Provided hardware maintenance, upgrades, and IT support; installed and configured operating systems, VMware, Wireshark, antivirus, Microsoft 365, Azure, and Linux.}
     \CVItemListEnd
 
 \CVSubHeadingListEnd
@@ -156,31 +160,31 @@ teams and executive stakeholders.}
 \section{Certifications}
 \begin{itemize}[leftmargin=0.4cm, label={}, itemsep=0pt]
   \small
-  \item \textbf{CrowdStrike Certified Falcon Administrator (CCFA-200)}
-  \item \textbf{Microsoft Certified: Cloud and AI Security Engineer Associate (SC-500)}
-  \item \textbf{Microsoft Certified: Security Operations Analyst Associate (SC-200)}
-  \item \textbf{Microsoft Certified: Azure Administrator Associate (AZ-104)}
-  \item \textbf{Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)}
-  \item \textbf{CompTIA Security+ (SY0-601)}
+  \item Microsoft Certified: Cloud and AI Security Engineer Associate (SC-500)
+  \item Microsoft Certified: Security Operations Analyst Associate (SC-200)
+  \item CrowdStrike Certified: Falcon Administrator (CCFA-200)
+  \item Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)
+  \item Microsoft Certified: Azure Administrator Associate (AZ-104)
+  \item CompTIA Security+
 \end{itemize}
 
 %-----EDUCATION----------------------------------------------------------------
 \section{Education}
 \CVSubHeadingListStart
 
-  \CVSubheading
+  \CVEdu
     {M.S., Digital Forensics and Cybersecurity}{May 2022}
     {John Jay College of Criminal Justice (CUNY)}{New York, NY}
 
-  \CVSubheading
+  \CVEdu
     {Advanced Certificate, Applied Digital Forensics}{May 2022}
     {John Jay College of Criminal Justice (CUNY)}{New York, NY}
 
-  \CVSubheading
+  \CVEdu
     {B.S., Computer Science and Information Security}{Dec 2020}
     {John Jay College of Criminal Justice (CUNY)}{New York, NY}
 
-  \CVSubheading
+  \CVEdu
     {A.S., Computer Network Technology}{May 2019}
     {Borough of Manhattan Community College (CUNY)}{New York, NY}
 
@@ -194,8 +198,7 @@ teams and executive stakeholders.}
     {Threat Intelligence \& SIEM Integration Lab}
     {Proxmox VE, Wazuh, MISP, Sysmon, Python}{2024}
     \CVItemListStart
-      \CVItem{Built a Proxmox-based SOC lab with Wazuh and MISP; integrated the MISP API with Wazuh for automated IoC correlation (malicious IPs, domains, file hashes).}
-      \CVItem{Deployed Wazuh agents and Sysmon on Windows endpoints to validate real-time detection and alerting workflows.}
+      \CVItem{Built a Proxmox-based SOC lab integrating MISP threat intelligence with Wazuh for automated correlation of malicious IP addresses, domains, and file hashes; deployed Wazuh agents and Sysmon to validate endpoint detection and alerting.}
     \CVItemListEnd
 
   \CVProject
@@ -205,27 +208,13 @@ teams and executive stakeholders.}
       \CVItem{Forwarded Windows Event Viewer data to a geolocation API with PowerShell and built a Sentinel workbook mapping global RDP brute-force attacks in real time.}
     \CVItemListEnd
 
-  \CVProject
-    {Digital Forensic Investigation}
-    {Autopsy, FTK Imager, Prefetch, Jump Lists}{2022}
-    \CVItemListStart
-      \CVItem{Acted as forensic investigator on data-theft and intrusion case scenarios; preserved evidence, maintained chain of custody, and produced investigative reports.}
-    \CVItemListEnd
-
-  \CVProject
-    {Raspberry Pi SOC \& Pentesting Homelab}
-    {Docker, Portainer, Kali Linux, SSH}{2021}
-    \CVItemListStart
-      \CVItem{Built an isolated, containerized lab (Kali, Metasploitable) on Raspberry Pi for penetration testing and attack simulation without exposing the home network.}
-    \CVItemListEnd
-
 \CVSubHeadingListEnd
 
 %-----LANGUAGES----------------------------------------------------------------
 \section{Languages}
 \begin{itemize}[leftmargin=0.4cm, label={}]
   \small
-  \item English (Fluent) $\;|\;$ French (Fluent)
+  \item English (Fluent) \;\textbar\; French (Fluent)
 \end{itemize}
 
 \end{document}
